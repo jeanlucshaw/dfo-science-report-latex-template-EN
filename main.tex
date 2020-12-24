@@ -1,0 +1,98 @@
+% ==========================================================
+%
+% Header
+%
+% ==========================================================
+
+\documentclass[12pt,authoryear]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[natbibapa,nodoi]{apacite}
+
+
+%% Dependencies
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{xcolor}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{subfigure}
+\usepackage{caption}
+\captionsetup{font=normal}
+\usepackage{pdfpages}
+\usepackage{titlesec}
+\usepackage[subfigure]{tocloft}
+\usepackage{xstring}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=blue,
+    citecolor=black,
+}
+
+
+% Apply formatting settings
+\input{settings/formatting}
+
+% Set bibliographic information of this report
+\input{settings/info}
+
+% Switch between report types
+\input{settings/report_type}
+
+% ==========================================================
+%
+% Document
+%
+% ==========================================================
+\begin{document}
+
+% Change & to "and" in citations. Must appear at the beginning of the document.
+\renewcommand{\BBAA}{and}
+\renewcommand{\BBAB}{and}
+
+% Front matter
+\includepdf[]{CoverMaterial/CoverPage.pdf} % Produced from the DFO template
+\includepdf[]{\seriesdescription} % Produced from the DFO template
+\input{CoverMaterial/titlepage.tex} % Edit
+\input{CoverMaterial/colophon.tex}
+
+% Content listings
+\clearpage
+\input{settings/tableofcontents}
+\input{settings/listoffigures}
+\input{settings/listoftables}
+\input{settings/macros}
+
+% Abstracts
+\input{abstract.tex}
+
+% Main text
+\input{introduction.tex}
+\input{methods.tex}
+\input{results.tex}
+\input{discussion.tex}
+\input{acknowledgements.tex}
+
+% ==========================================================
+%
+% Bibliography
+%
+% ==========================================================
+\newpage
+
+% Apacite LaTeX customizations
+\input{settings/dfoapacite}
+
+% Insert bibliography as starred section
+\dfobibliographysection{References cited}
+
+% Choose customized bibliography style
+\bibliographystyle{apacite/dfoapacite}
+
+% Link to your bibliographic database
+\bibliography{library.bib}
+
+\end{document}

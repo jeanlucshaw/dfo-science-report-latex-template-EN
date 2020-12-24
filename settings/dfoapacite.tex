@@ -1,0 +1,92 @@
+% ==========================================================
+%
+% A lot of customization was done in the .bst files to fit
+% the reference format of DFO, but what could be done in
+% LaTeX is written here.
+%
+% ==========================================================
+
+% Punctuation 
+\renewcommand{\BBOP}{}
+\renewcommand{\BBCP}{}
+\renewcommand{\BPBI}{.}
+\renewcommand{\BEDS}{Editors}
+\renewcommand{\BED}{Editor}
+
+% No title capitalization
+\renewcommand{\APACrefbtitle}[2]{#2}
+
+% Colon between article number and pages
+\renewcommand{\APACjournalVolNumPages}[4]{
+  \IfEndWith{#1}{.}{#1}{#1.}
+  \ifx\empty#2\empty
+  \else
+    \unskip \textbf{ #2}%  volume
+  \fi
+  \ifx\empty#3\empty
+  \else
+    \ifx\empty#2\empty
+      \unskip{ #3}%      issue number
+    \else
+      \unskip({#3})%      issue number
+    \fi    
+  \fi
+  \ifx\empty#4\empty
+  \else
+    \unskip: {#4}%      pages
+  \fi
+}
+
+% Thesis type, school and address formatting
+\renewcommand{\APACtypeAddressSchool}[3]{%
+  \ifx\empty#1\empty
+    \ifx\empty#3\empty
+      \ifx\empty#2\empty
+      \else
+        ({#2})%               address
+      \fi
+    \else
+      ({#3}%                  school
+      \ifx\empty#2\empty
+      \else
+        \unskip, {#2}%        address
+      \fi
+      )%
+    \fi
+  \else
+    {#1}%                    type
+    \ifx\empty#3\empty
+      \ifx\empty#2\empty
+      \else
+        \unskip, {#2}%        address
+      \fi
+    \else
+      \unskip, {#3}%          school
+      \ifx\empty#2\empty
+      \else
+        \unskip, {#2}%        address
+      \fi
+    \fi
+    %
+  \fi
+}
+
+% Book address and publisher formatting
+\renewcommand{\APACaddressPublisher}[2]{%
+  \ifx\empty#2\empty
+    \ifx\empty#1\empty
+    \else
+      {#1}.%                address
+    \fi
+  \else
+    {#2}%                   publisher
+    \ifx\empty#1\empty
+    .
+    \else
+      \unskip, {#1}.%       address
+    \fi
+  \fi
+}
+
+% Double space between references
+\setlength{\bibsep}{\baselineskip}

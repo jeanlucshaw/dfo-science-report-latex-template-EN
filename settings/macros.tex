@@ -1,0 +1,142 @@
+% Note exponent in table without changing central alignment
+\newcommand{\tablenotec}[2]{\textcolor{white}{$^#2$}#1$^#2$}
+
+
+% Insert unnumbered section and content if parameter 2 supplied.
+%
+% usage: \dfostarsection{Title}{file path and name (.tex)}
+%
+\makeatletter
+\newcommand{\dfostarsection}[2]{%
+
+  \refstepcounter{section}%
+  \section*{\MakeUppercase{#1}}%
+  \addtocounter{section}{-1}%
+  \def\@currentlabelname{#1}%
+  \def\@currentlabel{\lowercase{\thesection}}%
+  \label{sec:#1}%
+  \addcontentsline{toc}{section}{\texorpdfstring{\uppercase{#1}}{#1}}
+
+  % Insert contents of #2.tex after subsection heading
+  \ifx\empty#2\empty
+  \else
+  \input{#2}
+  \fi
+}
+\makeatother
+
+% Insert numbered section and content if parameter 2 supplied.
+%
+% usage: \dfosection{Title}{file path and name (.tex)}
+%
+\makeatletter
+\newcommand{\dfosection}[2]{%
+
+  \section{\texorpdfstring{\uppercase{#1}}{#1}}%
+  \label{sec:#1}%
+
+  % Insert contents of #2.tex after subsection heading
+  \ifx\empty#2\empty
+  \else
+  \input{#2}
+  \fi
+}
+\makeatother
+
+% Insert unnumbered subsection and content if parameter 2 supplied.
+%
+% usage: \dfostarsubsection{Title}{file path and name (.tex)}
+%
+\makeatletter
+\newcommand{\dfostarsubsection}[2]{%
+  \refstepcounter{subsection}%
+  \subsection*{#1}%
+  \addtocounter{subsection}{-1}%
+  \def\@currentlabelname{#1}%
+  \def\@currentlabel{\thesubsection}%
+  \label{ssec:#1}%
+  \addcontentsline{toc}{subsection}{#1}%
+  
+  % Insert contents of #2.tex after subsection heading
+  \ifx\empty#2\empty
+  \else
+  \input{#2}
+  \fi
+}
+\makeatother
+
+% Insert numbered subsection and content if parameter 2 supplied.
+%
+% usage: \dfosubsection{Title}{file path and name (.tex)}
+%
+\makeatletter
+\newcommand{\dfosubsection}[2]{%
+
+  \subsection{#1}%
+  %\def\@currentlabelname{#1}%
+  %\def\@currentlabel{\thesubsection}%
+  \label{ssec:#1}%
+  
+  % Insert contents of #2.tex after subsection heading
+  \ifx\empty#2\empty
+  \else
+  \input{#2}
+  \fi
+}
+\makeatother
+
+% Insert unnumbered subsubsection and content if parameter 2 supplied.
+%
+% usage: \dfostarsubsubsection{Title}{file path and name (.tex)}
+%
+\makeatletter
+\newcommand{\dfostarsubsubsection}[2]{%
+  \refstepcounter{subsection}%
+  \subsubsection*{#1}%
+  \addtocounter{subsubsection}{-1}%
+  \def\@currentlabelname{#1}%
+  \def\@currentlabel{\thesubsubsection}%
+  \label{ssec:#1}%
+  \addcontentsline{toc}{subsubsection}{#1}%
+  
+  % Insert contents of #2.tex after subsection heading
+  \ifx\empty#2\empty
+  \else
+  \input{#2}
+  \fi
+}
+\makeatother
+
+% Insert numbered subsubsection and content if parameter 2 supplied.
+%
+% usage: \dfosubsubsection{Title}{file path and name (.tex)}
+%
+\makeatletter
+\newcommand{\dfosubsubsection}[2]{%
+
+  \subsubsection{#1}%
+  \label{sssec:#1}%
+  
+  % Insert contents of #2.tex after subsection heading
+  \ifx\empty#2\empty
+  \else
+  \input{#2}
+  \fi
+}
+\makeatother
+
+% Insert bibliography heading as document section
+%
+% usage: \dfobibliographysection{References page title}
+%
+\newcommand{\dfobibliographysection}[1]{
+
+    \ifx\empty#1\empty
+        \dfostarsection{\refname}{}
+        \renewcommand{\refname}{}
+    \else
+        \dfostarsection{#1}{}
+        \renewcommand{\refname}{}
+    \fi
+    \vspace{-0.75cm}
+}

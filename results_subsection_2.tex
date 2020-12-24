@@ -1,0 +1,40 @@
+% Place the text and graphics of this subsection here
+This subsection contains an example of a table. Since the guide does not provide a data table example, the table format is based on that of publications in the Journal of Physical Oceanography and instructions of the Canadian Journal of Fisheries and Aquatic Science. Note that the caption is above the table and notes are indicated by alphabetically ordered, italicised, lower case letters. Alternatively, notes can be specified using symbols in this order: $\ast$, $\dagger$, $\ddagger$, $\S$, $\|$, and $\#$. Note also that no vertical lines are used. To add notes to centered numbers without modifying their alignment use the \texttt{tablenotec\{value\}\{symbol\}} macro.
+
+\begin{table}[t]
+    \begin{center}
+    
+    % Table caption
+    \caption{A table presenting an example for many common table features. If one row presents a statistic over the columns, the meaning of the statistic for each row should be explained here along with the meaning of the confidence interval.}
+    \label{tab:example}
+    
+    \begin{tabular}{ccccc}
+    % Table Header
+    \hline\hline
+    & & & \multicolumn{2}{c}{Column group} \\ \cline{4-5}
+    Row definition & Variable 1 & Variable 2 & Variable 3 & Variable 4 \\
+    & & (units 2) & (units 3) & (units 4)\\ \hline
+    
+    % First set of rows
+    \multicolumn{5}{l}{First row group} \\
+    obs. 1 & 8 & 54.5 & 183 & 4\\
+    \tablenotec{obs. 2}{a} & 9 & 52.5 & 219 & 2\\
+    
+    % Second set of rows
+    \multicolumn{5}{l}{Second row group} \\
+    obs. 3 &  & & 165 & 8\\
+    obs. 4 & 1 & & \tablenotec{78}{b} & \\
+    obs. 5 & 21 & & \tablenotec{100}{b} & 9\\ \hline
+    
+    % Statistic row
+    Statistic & & & & \\ \hline
+    
+    % Footnotes
+    \multicolumn{5}{l}{$^a$This observation required some precision.}\\
+    \multicolumn{5}{l}{$^b$These data required some other precision.}
+    \end{tabular}
+
+    \end{center}
+\end{table}
+
+\clearpage % delete once subsection is written

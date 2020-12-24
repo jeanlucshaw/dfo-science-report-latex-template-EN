@@ -1,0 +1,27 @@
+% ==========================================================
+%
+% Formatting options
+%
+% ==========================================================
+
+% Margins
+\usepackage[left=2.5cm, right=2.5cm, top=3cm, bottom=3cm]{geometry}
+
+% Font style (Helvetica)
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{helvet}
+
+%% Un-commenting this block moves page numbering to top center
+% ==========================================================
+% \usepackage{fancyhdr}
+% \fancyhf{}
+% \fancyhead[C]{\thepage}
+% \renewcommand{\headrulewidth}{0pt}
+% \pagestyle{fancy}
+% ==========================================================
+
+% Move section titles to center and set font size, weight
+\titleformat{\section}{\large\center\bfseries}{\thesection.}{0.5em}{}
+
+% Set subsections font size, weight and alignment
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{0.5em}{}

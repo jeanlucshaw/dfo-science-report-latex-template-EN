@@ -1,0 +1,11 @@
+% Formatting
+\renewcommand\cftsecfont{\normalfont}
+\renewcommand\cftsecpagefont{\normalfont}
+%\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}}
+\renewcommand\cftsecdotsep{\cftdot}
+\renewcommand\cftsubsecdotsep{\cftdot}
+\renewcommand\contentsname{\hfill TABLE OF CONTENTS \hfill \null}
+
+% Insert table of contents
+\tableofcontents
+\addtocontents{toc}{~\hfill\textbf{Page}\par}\clearpage
